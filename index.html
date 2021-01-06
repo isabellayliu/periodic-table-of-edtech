@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
+    <title>Periodic Table of EdTech</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+    <style type="text/css">
+      :root {
+        --grey-400: #BDBDBD;
+        --grey-900: #212121;
+        --red-100: #ffcdd2;
+        --red-200: #ef9a9a;
+        --orange-100: #FFE0B2;
+        --orange-200: #FFCC80;
+        --orange-300: #FFB74D;
+        --amber-100: #FFECB3;
+        --amber-200: #FFE082;
+        --amber-300: #FFD54F;
+        --yellow-100: #FFF9C4;
+        --yellow-200: #FFF59D;
+        --yellow-300: #FFF176;
+        --yellow-400: #FFEE58;
+        --light-blue-200: #81D4FA;
+        --light-blue-100: #B3E5FC;
+        --light-blue-300: #4FC3F7;
+        --blue-200: #90CAF9;
+        --blue-100: #BBDEFB;
+        --blue-400: #42a5f5;
+        --indigo-200: #9FA8DA;
+        --indigo-100: #C5CAE9;
+        --green-300: #81C784;
+        --green-200: #A5D6A7;
+
+        --gutter: 2.5vw;
+        --grid-column-width: 1fr;
+        --grid-row-height: 60px;
+        --grid-gap: 1px;
+
+        --element-padding: 10px;
+      }
+
+      @media only screen and (min-height: 1000px) {
+        :root {
+          --grid-row-height: 70px;
+        }
+      }
+
+      * {
+        box-sizing: border-box;
+        font-family: 'Noto Sans', sans-serif;
+        color: var(--grey-900);
+      }
+
+      main {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        width: 100vw;
+        padding: var(--gutter);
+      }
+
+      .wrapper {
+        width: 100%;
+      }
+
+      hgroup {
+        text-align: center;
+      }
+
+      hgroup h1 {
+        margin-top: 0;
+      }
+
+      hgroup h2 {
+        font-size: large;
+      }
+
+      legend {
+        display: none;
+      }
+
+      fieldset {
+        font-size: small;
+        border: none;
+        display: flex;
+        padding: 10px 0;
+        justify-content: flex-end;
+      }
+
+      input {
+        margin-right: 0.5em;
+      }
+
+      fieldset div {
+        margin: 0 0.5em;
+      }
+
+      label {
+        display: flex;
+        align-items: center;
+      }
+
+      .periodic-table {
+        display: grid;
+        grid-template-columns: repeat(18, var(--grid-column-width));
+        grid-template-rows: repeat(8, var(--grid-row-height)) calc(var(--grid-row-height) / 2) repeat(2, var(--grid-row-height));
+        gap: var(--grid-gap);
+      }
+
+      .element {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        padding: 10px;
+        height: 100%;
+        transition: opacity 0.25s ease-in-out;
+      }
+
+      .element:hover, .element:focus, .element:active {
+        cursor: pointer;
+        border: var(--grey-900) 1px solid;
+        padding: calc(var(--element-padding) - 1px);
+      }
+
+      .element a {
+        font-weight: 600;
+        text-decoration: none;
+      }
+
+      .element h2 {
+        font-size: xx-small;
+        font-weight: normal;
+        line-height: 1;
+        margin: 0;
+        text-align: center;
+      }
+
+      .element h3 {
+        font-size: medium;
+        line-height: 1;
+        margin: 0;
+      }
+
+      .element a:hover, .element a:focus, .element a:active {
+        text-decoration: underline;
+      }
+
+      .element abbr {
+        text-decoration: none;
+      }
+
+      .element .name, .element .description, .element .pricing, .element .flexfix {
+        display: none;
+      }
+
+      .element.disabled {
+        opacity: 0.25;
+        transition: opacity 0.25s ease-in-out;
+      }
+
+      @media only screen and (min-width: 1300px) {
+        .element {
+          justify-content: space-between;
+        }
+        .element .name, .element .flexfix {
+          display: block;
+        }
+      }
+
+      .periodic-table .symbol {
+        display: block;
+      }
+
+      .grid-column-1 { grid-column: 1; }
+      .grid-column-2 { grid-column: 2; }
+      .grid-column-3 { grid-column: 3; }
+      .grid-column-4 { grid-column: 4; }
+      .grid-column-5 { grid-column: 5; }
+      .grid-column-6 { grid-column: 6; }
+      .grid-column-7 { grid-column: 7; }
+      .grid-column-8 { grid-column: 8; }
+      .grid-column-9 { grid-column: 9; }
+      .grid-column-10 { grid-column: 10; }
+      .grid-column-11 { grid-column: 11; }
+      .grid-column-12 { grid-column: 12; }
+      .grid-column-13 { grid-column: 13; }
+      .grid-column-14 { grid-column: 14; }
+      .grid-column-15 { grid-column: 15; }
+      .grid-column-16 { grid-column: 16; }
+      .grid-column-17 { grid-column: 17; }
+      .grid-column-18 { grid-column: 18; }
+      .grid-row-1 { grid-row: 1; }
+      .grid-row-2 { grid-row: 2; }
+      .grid-row-3 { grid-row: 3; }
+      .grid-row-4 { grid-row: 4; }
+      .grid-row-5 { grid-row: 5; }
+      .grid-row-6 { grid-row: 6; }
+      .grid-row-7 { grid-row: 7; }
+      .grid-row-8 { grid-row: 8; }
+      .grid-row-9 { grid-row: 9; }
+      .grid-row-10 { grid-row: 10; }
+      .grid-row-11 { grid-row: 11; }
+
+      [data-group="1"] { background-color: var(--red-200); }
+      [data-group="2"] { background-color: var(--red-100); }
+      [data-group="3"] { background-color: var(--orange-300); }
+      [data-group="4"] { background-color: var(--orange-200); }
+      [data-group="5"] { background-color: var(--orange-100); }
+      [data-group="6"] { background-color: var(--amber-300); }
+      [data-group="7"] { background-color: var(--amber-200); }
+      [data-group="8"] { background-color: var(--amber-100); }
+      [data-group="9"] { background-color: var(--yellow-400); }
+      [data-group="10"] { background-color: var(--yellow-300); }
+      [data-group="11"] { background-color: var(--yellow-200); }
+      [data-group="12"] { background-color: var(--yellow-100); }
+      [data-group="13"] { background-color: var(--light-blue-100); }
+      [data-group="14"] { background-color: var(--light-blue-200); }
+      [data-group="15"] { background-color: var(--light-blue-300); }
+      [data-group="16"] { background-color: var(--blue-200); }
+      [data-group="17"] { background-color: var(--indigo-100); }
+      [data-group="18"] { background-color: var(--indigo-200); }
+      [data-group="La"] { background-color: var(--green-300); }
+      [data-group="Ac"] { background-color: var(--green-200); }
+
+      .periodic-table .info {
+        grid-column: 3 / 13;
+        grid-row: 2 / 4;
+      }
+
+      .info {
+        display: flex;
+        height: 100%;
+        width: 100%;
+      }
+
+      .info-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+        width: 100%;
+      }
+
+      .info-card div {
+        height: 50%;
+      }
+
+      .info-card p {
+        padding: 0 20px;
+      }
+
+      .info-card h2, .info-card h3 {
+        text-align: center;
+      }
+
+      .info-card h2 {
+        margin-top: 0;
+      }
+
+      .group-title {
+        display: flex;
+        font-size: x-small;
+        justify-content: flex-end;
+        flex-direction: column;
+        height: 100%;
+        padding: 10px;
+        text-align: center;
+      }
+
+      .group-title-La, .group-title-Ac {
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+        text-align: right;
+      }
+
+      .group-title div {
+        display: none;
+      }
+
+      @media only screen and (min-width: 1300px) {
+        .group-title div {
+          display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="wrapper">
+        <hgroup>
+          <h1>Periodic Table of EdTech</h1>
+          <h2>Curated by <a href="https://theisabellaliu.com">Isabella Liu</a></h2>
+        </hgroup>
+        <form class="filters">
+          <fieldset>
+            <legend>Filter by Cost</legend>
+            <div>
+              <label><input type="checkbox" class="filter" name="filter-cost-free" value="Free" checked autocomplete="off">Free</label>
+            </div>
+            <div>
+              <label><input type="checkbox" class="filter" name="filter-cost-freemium" value="Freemium" checked autocomplete="off">Freemium</label>
+            </div>
+            <div>
+              <label><input type="checkbox" id="filter-cost-free-for-educators" class="filter" name="filter-cost-free-for-educators" value="Free for educators" checked autocomplete="off">Free for Educators</label>
+            </div>
+            <div>
+              <label><input type="checkbox" id="filter-cost-free-us" class="filter" name="filter-cost-free-us" value="Free for qualified US students and schools" checked autocomplete="off">Free for qualified US students and schools</label>
+            </div>
+            <div>
+              <label><input type="checkbox" id="filter-cost-paid" class="filter" name="filter-cost-paid" value="Paid" checked autocomplete="off">Paid</label>
+            </div>
+          </fieldset>
+        </form>
+        <div class="periodic-table">
+
+          <div class="grid-item grid-column-1 grid-row-1">
+            <div class="group-title"><div>Interactive Lesson Templates</div></div>
+          </div>
+          <div class="grid-item grid-column-2 grid-row-2">
+            <div class="group-title"><div>Interactive Whiteboards</div></div>
+          </div>
+          <div class="grid-item grid-column-3 grid-row-4">
+            <div class="group-title"><div>Google</div></div>
+          </div>
+          <div class="grid-item grid-column-4 grid-row-4">
+            <div class="group-title"><div>Apple</div></div>
+          </div>
+          <div class="grid-item grid-column-5 grid-row-4">
+            <div class="group-title"><div>Microsoft</div></div>
+          </div>
+          <div class="grid-item grid-column-6 grid-row-4">
+            <div class="group-title"><div><abbr title="Learning Management System">LMS</abbr></div></div>
+          </div>
+          <div class="grid-item grid-column-7 grid-row-4">
+            <div class="group-title"><div>Blogging</div></div>
+          </div>
+          <div class="grid-item grid-column-8 grid-row-4">
+            <div class="group-title"><div>Polling</div></div>
+          </div>
+          <div class="grid-item grid-column-9 grid-row-4">
+            <div class="group-title"><div>Accessibility</div></div>
+          </div>
+          <div class="grid-item grid-column-10 grid-row-4">
+            <div class="group-title"><div>Collaboration</div></div>
+          </div>
+          <div class="grid-item grid-column-11 grid-row-4">
+            <div class="group-title"><div>Creativity</div></div>
+          </div>
+          <div class="grid-item grid-column-12 grid-row-4">
+            <div class="group-title"><div><abbr title="Social and Emotional Learning">SEL</abbr></div></div>
+          </div>
+          <div class="grid-item grid-column-13 grid-row-2">
+            <div class="group-title"><div>Discussion Tools</div></div>
+          </div>
+          <div class="grid-item grid-column-14 grid-row-2">
+            <div class="group-title"><div>Interactive Videos</div></div>
+          </div>
+          <div class="grid-item grid-column-15 grid-row-2">
+            <div class="group-title"><div>Curation</div></div>
+          </div>
+          <div class="grid-item grid-column-16 grid-row-2">
+            <div class="group-title"><div>Coding</div></div>
+          </div>
+          <div class="grid-item grid-column-17 grid-row-2">
+            <div class="group-title"><div>Screen Recording</div></div>
+          </div>
+          <div class="grid-item grid-column-18 grid-row-1">
+            <div class="group-title"><div>Social Media</div></div>
+          </div>
+          <div class="grid-item grid-column-3 grid-row-10">
+            <div class="group-title group-title-La"><div>Formative Assessments</div></div>
+          </div>
+          <div class="grid-item grid-column-3 grid-row-11">
+            <div class="group-title group-title-Ac"><div>Remote Teaching</div></div>
+          </div>
+
+          <!-- BEGIN GENERATED HTML -->
+<div class="grid-item grid-column-1 grid-row-2">
+  <div class="element" data-name="Nearpod" data-symbol="Np" data-url="https://nearpod.com/" data-group="1" data-period="1" data-cost="Freemium" tabindex=0>
+    <h2 class="name">Nearpod</h2>
+    <h3 class="symbol"><a href="https://nearpod.com/" rel="nofollow noreferrer"><abbr title="Nearpod">Np</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Nearpod allows teachers to create K-12 interactive lessons, videos, and formative assessments.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-1 grid-row-3">
+  <div class="element" data-name="PearDeck" data-symbol="Pd" data-url="https://www.peardeck.com/" data-group="1" data-period="2" data-cost="Freemium" tabindex=0>
+    <h2 class="name">PearDeck</h2>
+    <h3 class="symbol"><a href="https://www.peardeck.com/" rel="nofollow noreferrer"><abbr title="PearDeck">Pd</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">PearDeck is a Google Slides Add-On to make integrate interactive questions and formative assessment in presentations</p>
+  </div>
+</div>
+<div class="grid-item grid-column-1 grid-row-4">
+  <div class="element" data-name="Blendspace" data-symbol="Bp" data-url="https://www.blendspace.com/lessons" data-group="1" data-period="3" data-cost="Freemium" tabindex=0>
+    <h2 class="name">Blendspace</h2>
+    <h3 class="symbol"><a href="https://www.blendspace.com/lessons" rel="nofollow noreferrer"><abbr title="Blendspace">Bp</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Blendspace is an online resource that is designed to help teachers create digital lessons that can be shared out with students.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-1 grid-row-5">
+  <div class="element" data-name="LessonUp" data-symbol="Lu" data-url="https://www.lessonup.com" data-group="1" data-period="4" data-cost="Freemium" tabindex=0>
+    <h2 class="name">LessonUp</h2>
+    <h3 class="symbol"><a href="https://www.lessonup.com" rel="nofollow noreferrer"><abbr title="LessonUp">Lu</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">LessonUp is an online Learning Platform that allows teachers to create engaging lessons using video, images, interactive questions and quizzes.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-1 grid-row-6">
+  <div class="element" data-name="ClassFlow" data-symbol="Cf" data-url="https://classflow.com/" data-group="1" data-period="5" data-cost="Freemium" tabindex=0>
+    <h2 class="name">ClassFlow</h2>
+    <h3 class="symbol"><a href="https://classflow.com/" rel="nofollow noreferrer"><abbr title="ClassFlow">Cf</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">ClassFlow is a cloud-based teaching software that allows teachers to build and access interactive lessons from any web browser, share lessons with other peers and collaborate using the latest mobile and student response technology. </p>
+  </div>
+</div>
+<div class="grid-item grid-column-1 grid-row-7">
+  <div class="element" data-name="Haiku Deck" data-symbol="Hd" data-url="https://www.haikudeck.com/" data-group="1" data-period="6" data-cost="Freemium" tabindex=0>
+    <h2 class="name">Haiku Deck</h2>
+    <h3 class="symbol"><a href="https://www.haikudeck.com/" rel="nofollow noreferrer"><abbr title="Haiku Deck">Hd</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Haiku Deck is a presentation creation website and app (for iOS) that uses images, text, audio, and video to make impactful presentations with &quot;decks&quot; of slides.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-1 grid-row-8">
+  <div class="element" data-name="Prezi" data-symbol="Pz" data-url="https://prezi.com/" data-group="1" data-period="7" data-cost="Freemium" tabindex=0>
+    <h2 class="name">Prezi</h2>
+    <h3 class="symbol"><a href="https://prezi.com/" rel="nofollow noreferrer"><abbr title="Prezi">Pz</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Prezi is a presentation creation website that creates interactive visuals</p>
+  </div>
+</div>
+<div class="grid-item grid-column-2 grid-row-3">
+  <div class="element" data-name="Explain Everything" data-symbol="Ee" data-url="https://explaineverything.com/" data-group="2" data-period="2" data-cost="Freemium" tabindex=0>
+    <h2 class="name">Explain Everything</h2>
+    <h3 class="symbol"><a href="https://explaineverything.com/" rel="nofollow noreferrer"><abbr title="Explain Everything">Ee</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Explain Everything is an interactive online whiteboard platform for which they offer two apps: Explain Everything Whiteboard (browser, subscription based online whiteboard) and Explain EDU (Explain Everything app for iOS only).</p>
+  </div>
+</div>
+<div class="grid-item grid-column-2 grid-row-4">
+  <div class="element" data-name="Jamboard" data-symbol="J" data-url="https://jamboard.google.com/" data-group="2" data-period="3" data-cost="Free" tabindex=0>
+    <h2 class="name">Jamboard</h2>
+    <h3 class="symbol"><a href="https://jamboard.google.com/" rel="nofollow noreferrer"><abbr title="Jamboard">J</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Jamboard is an interactive whiteboard system developed by Google as part of Google Workspace</p>
+  </div>
+</div>
+<div class="grid-item grid-column-2 grid-row-5">
+  <div class="element" data-name="Sketchboard.io" data-symbol="Sk" data-url="http://sketchboard.io/" data-group="2" data-period="4" data-cost="Freemium" tabindex=0>
+    <h2 class="name">Sketchboard.io</h2>
+    <h3 class="symbol"><a href="http://sketchboard.io/" rel="nofollow noreferrer"><abbr title="Sketchboard.io">Sk</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Sketchboard.io is an online whiteboard that allows collaboration to occur virtually at the same time.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-2 grid-row-6">
+  <div class="element" data-name="Whiteboard.fi" data-symbol="Wb" data-url="http://whiteboard.fi/" data-group="2" data-period="5" data-cost="Free" tabindex=0>
+    <h2 class="name">Whiteboard.fi</h2>
+    <h3 class="symbol"><a href="http://whiteboard.fi/" rel="nofollow noreferrer"><abbr title="Whiteboard.fi">Wb</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Whiteboard.fi is an online whiteboard tool designed for teachers and classrooms!</p>
+  </div>
+</div>
+<div class="grid-item grid-column-2 grid-row-7">
+  <div class="element" data-name="Educreations" data-symbol="Ec" data-url="https://www.educreations.com/" data-group="2" data-period="6" data-cost="Freemium" tabindex=0>
+    <h2 class="name">Educreations</h2>
+    <h3 class="symbol"><a href="https://www.educreations.com/" rel="nofollow noreferrer"><abbr title="Educreations">Ec</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Educreations is an interactive whiteboard and screencasting tool that&#x27;s simple, powerful, and fun to use. It allows teachers to annotate, animate, and narrate content.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-2 grid-row-8">
+  <div class="element" data-name="OneNote" data-symbol="On" data-url="https://www.onenote.com/" data-group="2" data-period="7" data-cost="Free" tabindex=0>
+    <h2 class="name">OneNote</h2>
+    <h3 class="symbol"><a href="https://www.onenote.com/" rel="nofollow noreferrer"><abbr title="OneNote">On</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Microsoft OneNote is a note-taking program for free-form information gathering and multi-user collaboration.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-3 grid-row-5">
+  <div class="element" data-name="Docs" data-symbol="Gd" data-url="https://docs.google.com/" data-group="3" data-period="4" data-cost="Free" tabindex=0>
+    <h2 class="name">Docs</h2>
+    <h3 class="symbol"><a href="https://docs.google.com/" rel="nofollow noreferrer"><abbr title="Docs">Gd</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Google Docs is a word processor included as part of the free, web-based Google Docs Editors suite offered by Google. </p>
+  </div>
+</div>
+<div class="grid-item grid-column-3 grid-row-6">
+  <div class="element" data-name="Sheets" data-symbol="Gs" data-url="https://www.google.com/sheets/about/" data-group="3" data-period="5" data-cost="Free" tabindex=0>
+    <h2 class="name">Sheets</h2>
+    <h3 class="symbol"><a href="https://www.google.com/sheets/about/" rel="nofollow noreferrer"><abbr title="Sheets">Gs</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Google Sheets is a spreadsheet program included as part of the free, web-based Google Docs Editors suite offered by Google. </p>
+  </div>
+</div>
+<div class="grid-item grid-column-3 grid-row-7">
+  <div class="element" data-name="Slides" data-symbol="Gp" data-url="https://www.google.ca/slides/about/" data-group="3" data-period="6" data-cost="Free" tabindex=0>
+    <h2 class="name">Slides</h2>
+    <h3 class="symbol"><a href="https://www.google.ca/slides/about/" rel="nofollow noreferrer"><abbr title="Slides">Gp</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Google Slides is a presentation program included as part of the free, web-based Google Docs Editors suite offered by Google. </p>
+  </div>
+</div>
+<div class="grid-item grid-column-3 grid-row-8">
+  <div class="element" data-name="Chrome" data-symbol="Ch" data-url="https://www.google.com/intl/en_ca/chrome/" data-group="3" data-period="7" data-cost="Free" tabindex=0>
+    <h2 class="name">Chrome</h2>
+    <h3 class="symbol"><a href="https://www.google.com/intl/en_ca/chrome/" rel="nofollow noreferrer"><abbr title="Chrome">Ch</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Google Chrome is a cross-platform web browser developed by Google.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-4 grid-row-5">
+  <div class="element" data-name="Pages" data-symbol="Ad" data-url="https://www.apple.com/ca/pages/" data-group="4" data-period="4" data-cost="Free" tabindex=0>
+    <h2 class="name">Pages</h2>
+    <h3 class="symbol"><a href="https://www.apple.com/ca/pages/" rel="nofollow noreferrer"><abbr title="Pages">Ad</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Pages is a word processor developed by Apple Inc.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-4 grid-row-6">
+  <div class="element" data-name="Numbers" data-symbol="As" data-url="https://www.apple.com/ca/numbers/" data-group="4" data-period="5" data-cost="Free" tabindex=0>
+    <h2 class="name">Numbers</h2>
+    <h3 class="symbol"><a href="https://www.apple.com/ca/numbers/" rel="nofollow noreferrer"><abbr title="Numbers">As</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Numbers is a spreadsheet application developed by Apple Inc.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-4 grid-row-7">
+  <div class="element" data-name="Keynote" data-symbol="Ap" data-url="https://www.apple.com/ca/keynote/" data-group="4" data-period="6" data-cost="Free" tabindex=0>
+    <h2 class="name">Keynote</h2>
+    <h3 class="symbol"><a href="https://www.apple.com/ca/keynote/" rel="nofollow noreferrer"><abbr title="Keynote">Ap</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Keynote is a presentation software application developed by Apple Inc.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-4 grid-row-8">
+  <div class="element" data-name="Safari" data-symbol="Si" data-url="https://support.apple.com/downloads/safari" data-group="4" data-period="7" data-cost="Free" tabindex=0>
+    <h2 class="name">Safari</h2>
+    <h3 class="symbol"><a href="https://support.apple.com/downloads/safari" rel="nofollow noreferrer"><abbr title="Safari">Si</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Safari is a graphical web browser developed by Apple Inc.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-5 grid-row-5">
+  <div class="element" data-name="Word" data-symbol="Mw" data-url="https://www.microsoft.com/en-us/microsoft-365/word" data-group="5" data-period="4" data-cost="Paid" tabindex=0>
+    <h2 class="name">Word</h2>
+    <h3 class="symbol"><a href="https://www.microsoft.com/en-us/microsoft-365/word" rel="nofollow noreferrer"><abbr title="Word">Mw</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Microsoft Word is a word processor developed by Microsoft.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-5 grid-row-6">
+  <div class="element" data-name="Excel" data-symbol="Me" data-url="https://office.live.com/start/excel.aspx" data-group="5" data-period="5" data-cost="Paid" tabindex=0>
+    <h2 class="name">Excel</h2>
+    <h3 class="symbol"><a href="https://office.live.com/start/excel.aspx" rel="nofollow noreferrer"><abbr title="Excel">Me</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Microsoft Excel is a spreadsheet developed by Microsoft. </p>
+  </div>
+</div>
+<div class="grid-item grid-column-5 grid-row-7">
+  <div class="element" data-name="Presentation" data-symbol="Mp" data-url="https://office.live.com/start/powerpoint.aspx" data-group="5" data-period="6" data-cost="Paid" tabindex=0>
+    <h2 class="name">Presentation</h2>
+    <h3 class="symbol"><a href="https://office.live.com/start/powerpoint.aspx" rel="nofollow noreferrer"><abbr title="Presentation">Mp</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Microsoft Presentation is a presentation program developed by Microsoft.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-5 grid-row-8">
+  <div class="element" data-name="Edge" data-symbol="Eg" data-url="https://www.microsoft.com/en-us/edge" data-group="5" data-period="7" data-cost="Free" tabindex=0>
+    <h2 class="name">Edge</h2>
+    <h3 class="symbol"><a href="https://www.microsoft.com/en-us/edge" rel="nofollow noreferrer"><abbr title="Edge">Eg</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Microsoft Edge is a cross-platform web browser developed by Microsoft.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-6 grid-row-5">
+  <div class="element" data-name="Google Classroom" data-symbol="G" data-url="https://classroom.google.com/" data-group="6" data-period="4" data-cost="Free" tabindex=0>
+    <h2 class="name">Google Classroom</h2>
+    <h3 class="symbol"><a href="https://classroom.google.com/" rel="nofollow noreferrer"><abbr title="Google Classroom">G</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Google Classroom is a free web service developed by Google for schools that aims to simplify creating, distributing, and grading assignments. </p>
+  </div>
+</div>
+<div class="grid-item grid-column-6 grid-row-6">
+  <div class="element" data-name="Brightspace" data-symbol="Bt" data-url="https://www.d2l.com/" data-group="6" data-period="5" data-cost="Paid" tabindex=0>
+    <h2 class="name">Brightspace</h2>
+    <h3 class="symbol"><a href="https://www.d2l.com/" rel="nofollow noreferrer"><abbr title="Brightspace">Bt</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Brightspace is a learning management system that is used by schools, higher education, and businesses for online and blended classroom learning. </p>
+  </div>
+</div>
+<div class="grid-item grid-column-6 grid-row-7">
+  <div class="element" data-name="Moodle" data-symbol="M" data-url="https://moodle.org/" data-group="6" data-period="6" data-cost="Free" tabindex=0>
+    <h2 class="name">Moodle</h2>
+    <h3 class="symbol"><a href="https://moodle.org/" rel="nofollow noreferrer"><abbr title="Moodle">M</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Moodle is a free and open-source learning management system.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-6 grid-row-8">
+  <div class="element" data-name="Edmodo" data-symbol="Em" data-url="https://new.edmodo.com/" data-group="6" data-period="7" data-cost="Freemium" tabindex=0>
+    <h2 class="name">Edmodo</h2>
+    <h3 class="symbol"><a href="https://new.edmodo.com/" rel="nofollow noreferrer"><abbr title="Edmodo">Em</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Edmodo is a learning management system that offers a communication, collaboration, and coaching platform to K-12 schools and teachers.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-7 grid-row-5">
+  <div class="element" data-name="Google Sites" data-symbol="Gi" data-url="https://sites.google.com/" data-group="7" data-period="4" data-cost="Free" tabindex=0>
+    <h2 class="name">Google Sites</h2>
+    <h3 class="symbol"><a href="https://sites.google.com/" rel="nofollow noreferrer"><abbr title="Google Sites">Gi</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Google Sites is a structured wiki- and web page-creation tool offered by Google.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-7 grid-row-6">
+  <div class="element" data-name="Wordpress" data-symbol="Wp" data-url="https://wordpress.com/" data-group="7" data-period="5" data-cost="Free" tabindex=0>
+    <h2 class="name">Wordpress</h2>
+    <h3 class="symbol"><a href="https://wordpress.com/" rel="nofollow noreferrer"><abbr title="Wordpress">Wp</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">WordPress is a free and open-source content management system</p>
+  </div>
+</div>
+<div class="grid-item grid-column-7 grid-row-7">
+  <div class="element" data-name="Edublogs" data-symbol="Eb" data-url="https://edublogs.org/" data-group="7" data-period="6" data-cost="Free" tabindex=0>
+    <h2 class="name">Edublogs</h2>
+    <h3 class="symbol"><a href="https://edublogs.org/" rel="nofollow noreferrer"><abbr title="Edublogs">Eb</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Edublogs is a blogging platform for teachers and students.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-7 grid-row-8">
+  <div class="element" data-name="Wix" data-symbol="Wx" data-url="https://www.wix.com/about/us" data-group="7" data-period="7" data-cost="Free" tabindex=0>
+    <h2 class="name">Wix</h2>
+    <h3 class="symbol"><a href="https://www.wix.com/about/us" rel="nofollow noreferrer"><abbr title="Wix">Wx</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Wix is a website building platform.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-8 grid-row-5">
+  <div class="element" data-name="Mentimeter" data-symbol="Mn" data-url="https://www.mentimeter.com/" data-group="8" data-period="4" data-cost="Freemium" tabindex=0>
+    <h2 class="name">Mentimeter</h2>
+    <h3 class="symbol"><a href="https://www.mentimeter.com/" rel="nofollow noreferrer"><abbr title="Mentimeter">Mn</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Mentimeter allows presenters to create interactive presentations for real-time feedback</p>
+  </div>
+</div>
+<div class="grid-item grid-column-8 grid-row-6">
+  <div class="element" data-name="Poll Everywhere" data-symbol="Pe" data-url="https://www.polleverywhere.com/" data-group="8" data-period="5" data-cost="Freemium" tabindex=0>
+    <h2 class="name">Poll Everywhere</h2>
+    <h3 class="symbol"><a href="https://www.polleverywhere.com/" rel="nofollow noreferrer"><abbr title="Poll Everywhere">Pe</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Poll Everywhere is an online service for classroom response and audience response systems</p>
+  </div>
+</div>
+<div class="grid-item grid-column-8 grid-row-7">
+  <div class="element" data-name="Slido" data-symbol="S" data-url="https://www.sli.do/" data-group="8" data-period="6" data-cost="Freemium" tabindex=0>
+    <h2 class="name">Slido</h2>
+    <h3 class="symbol"><a href="https://www.sli.do/" rel="nofollow noreferrer"><abbr title="Slido">S</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Slido is a Q&amp;A and polling platform for live and virtual meetings and events.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-8 grid-row-8">
+  <div class="element" data-name="Glisser" data-symbol="Gl" data-url="https://www.glisser.com/" data-group="8" data-period="7" data-cost="Freemium" tabindex=0>
+    <h2 class="name">Glisser</h2>
+    <h3 class="symbol"><a href="https://www.glisser.com/" rel="nofollow noreferrer"><abbr title="Glisser">Gl</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Glisser is a virtual and hybrid event hosting platform with an integrated audience response system.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-9 grid-row-5">
+  <div class="element" data-name="Bookshare" data-symbol="Bs" data-url="https://www.bookshare.org/" data-group="9" data-period="4" data-cost="Free for qualified US students and schools" tabindex=0>
+    <h2 class="name">Bookshare</h2>
+    <h3 class="symbol"><a href="https://www.bookshare.org/" rel="nofollow noreferrer"><abbr title="Bookshare">Bs</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Bookshare makes reading easier for people with dyslexia, blindness, cerebral palsy, and other reading barriers. Users can customize their experience to suit their learning style and find virtually any book they need for school or work.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-9 grid-row-6">
+  <div class="element" data-name="Read&amp;Write" data-symbol="Rw" data-url="https://www.texthelp.com/en-us/products/read-write/read-write-for-education/" data-group="9" data-period="5" data-cost="Paid" tabindex=0>
+    <h2 class="name">Read&amp;Write</h2>
+    <h3 class="symbol"><a href="https://www.texthelp.com/en-us/products/read-write/read-write-for-education/" rel="nofollow noreferrer"><abbr title="Read&amp;Write">Rw</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Read&amp;Write is a software toolbar that helps students create and access content with the literacy support features needed to engage with a personalized learning experience.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-9 grid-row-7">
+  <div class="element" data-name="Seeing AI" data-symbol="Ai" data-url="https://www.microsoft.com/en-us/ai/seeing-ai" data-group="9" data-period="6" data-cost="Free" tabindex=0>
+    <h2 class="name">Seeing AI</h2>
+    <h3 class="symbol"><a href="https://www.microsoft.com/en-us/ai/seeing-ai" rel="nofollow noreferrer"><abbr title="Seeing AI">Ai</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Seeing AI is an artificial intelligence application developed by Microsoft for iOS. Seeing AI uses the device camera to identify people and objects, and then the app audibly describes those objects for people with visual impairment.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-9 grid-row-8">
+  <div class="element" data-name="Rewordify" data-symbol="Ry" data-url="https://rewordify.com/" data-group="9" data-period="7" data-cost="Free" tabindex=0>
+    <h2 class="name">Rewordify</h2>
+    <h3 class="symbol"><a href="https://rewordify.com/" rel="nofollow noreferrer"><abbr title="Rewordify">Ry</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Rewordify is powerful, free, online software that improves reading, learning, and teaching. This site can simplify difficult English, for faster comprehension.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-10 grid-row-5">
+  <div class="element" data-name="Breakout EDU" data-symbol="Br" data-url="https://www.breakoutedu.com/" data-group="10" data-period="4" data-cost="Freemium" tabindex=0>
+    <h2 class="name">Breakout EDU</h2>
+    <h3 class="symbol"><a href="https://www.breakoutedu.com/" rel="nofollow noreferrer"><abbr title="Breakout EDU">Br</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">BreakoutEDU has games for both remote and in-person learning where students work collaboratively to solve puzzles.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-10 grid-row-6">
+  <div class="element" data-name="Minecraft: Education" data-symbol="Mc" data-url="https://education.minecraft.net/" data-group="10" data-period="5" data-cost="Freemium" tabindex=0>
+    <h2 class="name">Minecraft: Education</h2>
+    <h3 class="symbol"><a href="https://education.minecraft.net/" rel="nofollow noreferrer"><abbr title="Minecraft: Education">Mc</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Minecraft: Education Edition website offers lesson plans and downloadable worlds to help teachers integrate the game into the classroom. </p>
+  </div>
+</div>
+<div class="grid-item grid-column-10 grid-row-7">
+  <div class="element" data-name="GooseChase EDU" data-symbol="Go" data-url="https://www.goosechase.com/" data-group="10" data-period="6" data-cost="Freemium" tabindex=0>
+    <h2 class="name">GooseChase EDU</h2>
+    <h3 class="symbol"><a href="https://www.goosechase.com/" rel="nofollow noreferrer"><abbr title="GooseChase EDU">Go</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">GooseChaseEDU allows teachers to create custom photo and video scavenger hunts. Students can play scavenger hunts through an app on smartphones, tablets, and other mobile devices. </p>
+  </div>
+</div>
+<div class="grid-item grid-column-10 grid-row-8">
+  <div class="element" data-name="PenPal Schools" data-symbol="Ps" data-url="https://www.penpalschools.com/" data-group="10" data-period="7" data-cost="Paid" tabindex=0>
+    <h2 class="name">PenPal Schools</h2>
+    <h3 class="symbol"><a href="https://www.penpalschools.com/" rel="nofollow noreferrer"><abbr title="PenPal Schools">Ps</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">PenPal Schools connects students from 150 countries through project based learning.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-11 grid-row-5">
+  <div class="element" data-name="Canva" data-symbol="Cv" data-url="https://www.canva.com/" data-group="11" data-period="4" data-cost="Free for educators" tabindex=0>
+    <h2 class="name">Canva</h2>
+    <h3 class="symbol"><a href="https://www.canva.com/" rel="nofollow noreferrer"><abbr title="Canva">Cv</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Canva is a graphic design platform, used to create social media graphics, presentations, posters, documents and other visual content.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-11 grid-row-6">
+  <div class="element" data-name="Book Creator" data-symbol="Bc" data-url="https://bookcreator.com/" data-group="11" data-period="5" data-cost="Freemium" tabindex=0>
+    <h2 class="name">Book Creator</h2>
+    <h3 class="symbol"><a href="https://bookcreator.com/" rel="nofollow noreferrer"><abbr title="Book Creator">Bc</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Book Creator allows students to make digital books online on Chromebooks, PCs, iPads or tablets.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-11 grid-row-7">
+  <div class="element" data-name="Glogster" data-symbol="Gg" data-url="http://edu.glogster.com/" data-group="11" data-period="6" data-cost="Freemium" tabindex=0>
+    <h2 class="name">Glogster</h2>
+    <h3 class="symbol"><a href="http://edu.glogster.com/" rel="nofollow noreferrer"><abbr title="Glogster">Gg</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Glogster is a cloud-based platform for creating presentations and interactive learning.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-11 grid-row-8">
+  <div class="element" data-name="TinkerCad" data-symbol="Tc" data-url="https://www.tinkercad.com/" data-group="11" data-period="7" data-cost="Free" tabindex=0>
+    <h2 class="name">TinkerCad</h2>
+    <h3 class="symbol"><a href="https://www.tinkercad.com/" rel="nofollow noreferrer"><abbr title="TinkerCad">Tc</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Tinkercad is an online 3D modeling program that runs in a web browser.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-12 grid-row-5">
+  <div class="element" data-name="GoNoodle" data-symbol="Gn" data-url="https://www.gonoodle.com/" data-group="12" data-period="4" data-cost="Freemium" tabindex=0>
+    <h2 class="name">GoNoodle</h2>
+    <h3 class="symbol"><a href="https://www.gonoodle.com/" rel="nofollow noreferrer"><abbr title="GoNoodle">Gn</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">GoNoodle helps teachers and parents get kids moving with short interactive activities.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-12 grid-row-6">
+  <div class="element" data-name="Headspace" data-symbol="Hs" data-url="https://www.headspace.com/" data-group="12" data-period="5" data-cost="Free for educators" tabindex=0>
+    <h2 class="name">Headspace</h2>
+    <h3 class="symbol"><a href="https://www.headspace.com/" rel="nofollow noreferrer"><abbr title="Headspace">Hs</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Headspace is a guided meditation app for iOS and Android users.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-12 grid-row-7">
+  <div class="element" data-name="Calm" data-symbol="C" data-url="https://www.calm.com/" data-group="12" data-period="6" data-cost="Freemium" tabindex=0>
+    <h2 class="name">Calm</h2>
+    <h3 class="symbol"><a href="https://www.calm.com/" rel="nofollow noreferrer"><abbr title="Calm">C</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Calm is a guided meditation app for iOS and Android users.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-12 grid-row-8">
+  <div class="element" data-name="Ten Percent Happier" data-symbol="H" data-url="https://www.tenpercent.com/" data-group="12" data-period="7" data-cost="Free for educators" tabindex=0>
+    <h2 class="name">Ten Percent Happier</h2>
+    <h3 class="symbol"><a href="https://www.tenpercent.com/" rel="nofollow noreferrer"><abbr title="Ten Percent Happier">H</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Ten Percent Happier is a guided meditation app for iOS and Android users.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-13 grid-row-3">
+  <div class="element" data-name="Parley" data-symbol="Pr" data-url="https://parlayideas.com/" data-group="13" data-period="2" data-cost="Freemium" tabindex=0>
+    <h2 class="name">Parley</h2>
+    <h3 class="symbol"><a href="https://parlayideas.com/" rel="nofollow noreferrer"><abbr title="Parley">Pr</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Parlay is a discussion-based learning tool for classroom discussions.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-13 grid-row-4">
+  <div class="element" data-name="Google Chat" data-symbol="Gc" data-url="https://chat.google.com/" data-group="13" data-period="3" data-cost="Free" tabindex=0>
+    <h2 class="name">Google Chat</h2>
+    <h3 class="symbol"><a href="https://chat.google.com/" rel="nofollow noreferrer"><abbr title="Google Chat">Gc</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Google Chat is a communication software developed by Google built for teams that provides direct messages and team chat rooms</p>
+  </div>
+</div>
+<div class="grid-item grid-column-13 grid-row-5">
+  <div class="element" data-name="Microsoft Teams" data-symbol="Mt" data-url="https://www.microsoft.com/en-ca/microsoft-365/microsoft-teams/group-chat-software" data-group="13" data-period="4" data-cost="Free" tabindex=0>
+    <h2 class="name">Microsoft Teams</h2>
+    <h3 class="symbol"><a href="https://www.microsoft.com/en-ca/microsoft-365/microsoft-teams/group-chat-software" rel="nofollow noreferrer"><abbr title="Microsoft Teams">Mt</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Microsoft Teams is a proprietary business communication platform developed by Microsoft</p>
+  </div>
+</div>
+<div class="grid-item grid-column-13 grid-row-6">
+  <div class="element" data-name="Kaizena" data-symbol="Kz" data-url="https://www.kaizena.com/" data-group="13" data-period="5" data-cost="Free" tabindex=0>
+    <h2 class="name">Kaizena</h2>
+    <h3 class="symbol"><a href="https://www.kaizena.com/" rel="nofollow noreferrer"><abbr title="Kaizena">Kz</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Free for educators and students. Kaizena is a Chrome extension that allows teachers to give high quality feedback on student work by simply highlight and speak to give verbal feedback, or attach reusable resources for common problems. </p>
+  </div>
+</div>
+<div class="grid-item grid-column-13 grid-row-7">
+  <div class="element" data-name="Kialo Edu" data-symbol="Ke" data-url="https://www.kialo-edu.com/" data-group="13" data-period="6" data-cost="Free" tabindex=0>
+    <h2 class="name">Kialo Edu</h2>
+    <h3 class="symbol"><a href="https://www.kialo-edu.com/" rel="nofollow noreferrer"><abbr title="Kialo Edu">Ke</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Kialo is a discussion tool that can be used to facilitate classroom debate and discussions</p>
+  </div>
+</div>
+<div class="grid-item grid-column-13 grid-row-8">
+  <div class="element" data-name="YO Teach!" data-symbol="Yo" data-url="https://yoteachapp.com/" data-group="13" data-period="7" data-cost="Free" tabindex=0>
+    <h2 class="name">YO Teach!</h2>
+    <h3 class="symbol"><a href="https://yoteachapp.com/" rel="nofollow noreferrer"><abbr title="YO Teach!">Yo</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">YO Teach! is a multi-featured backchannel web app where teachers create and moderate chat rooms for real-time digital interaction among students.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-14 grid-row-3">
+  <div class="element" data-name="YouTube" data-symbol="Y" data-url="https://www.youtube.com/" data-group="14" data-period="2" data-cost="Free" tabindex=0>
+    <h2 class="name">YouTube</h2>
+    <h3 class="symbol"><a href="https://www.youtube.com/" rel="nofollow noreferrer"><abbr title="YouTube">Y</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">YouTube is an online video sharing platform. Teachers can create YouTube playlists with relevant videos to share with students.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-14 grid-row-4">
+  <div class="element" data-name="Edpuzzle" data-symbol="Ep" data-url="https://edpuzzle.com/" data-group="14" data-period="3" data-cost="Freemium" tabindex=0>
+    <h2 class="name">Edpuzzle</h2>
+    <h3 class="symbol"><a href="https://edpuzzle.com/" rel="nofollow noreferrer"><abbr title="Edpuzzle">Ep</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Edpuzzle allows teachers to create interactive video lessons for students. No skipping function is automatically enabled to ensure students are watching the videos in their entirety.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-14 grid-row-5">
+  <div class="element" data-name="Flipgrid" data-symbol="Fg" data-url="https://flipgrid.com/" data-group="14" data-period="4" data-cost="Free" tabindex=0>
+    <h2 class="name">Flipgrid</h2>
+    <h3 class="symbol"><a href="https://flipgrid.com/" rel="nofollow noreferrer"><abbr title="Flipgrid">Fg</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Flipgrid is a website that allows teachers to create &quot;grids&quot; to facilitate video discussions or feedback.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-14 grid-row-6">
+  <div class="element" data-name="WeVideo" data-symbol="Wv" data-url="https://www.wevideo.com/" data-group="14" data-period="5" data-cost="Freemium" tabindex=0>
+    <h2 class="name">WeVideo</h2>
+    <h3 class="symbol"><a href="https://www.wevideo.com/" rel="nofollow noreferrer"><abbr title="WeVideo">Wv</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">WeVideo is an online, cloud-based video editing platform that works in web browsers and on mobile devices.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-14 grid-row-7">
+  <div class="element" data-name="Thinglink" data-symbol="Tl" data-url="https://www.thinglink.com/" data-group="14" data-period="6" data-cost="Freemium" tabindex=0>
+    <h2 class="name">Thinglink</h2>
+    <h3 class="symbol"><a href="https://www.thinglink.com/" rel="nofollow noreferrer"><abbr title="Thinglink">Tl</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">ThingLink is a free and user friendly digital tool that provides users with the ability to turn any images or videos into an interactive graphic.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-14 grid-row-8">
+  <div class="element" data-name="TED-Ed" data-symbol="Te" data-url="https://ed.ted.com/" data-group="14" data-period="7" data-cost="Free" tabindex=0>
+    <h2 class="name">TED-Ed</h2>
+    <h3 class="symbol"><a href="https://ed.ted.com/" rel="nofollow noreferrer"><abbr title="TED-Ed">Te</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">TED-Ed contains videos and guiding questions on particular concepts that teachers can easily integrate into their lessons.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-15 grid-row-3">
+  <div class="element" data-name="Wakelet" data-symbol="Wk" data-url="https://wakelet.com/" data-group="15" data-period="2" data-cost="Free" tabindex=0>
+    <h2 class="name">Wakelet</h2>
+    <h3 class="symbol"><a href="https://wakelet.com/" rel="nofollow noreferrer"><abbr title="Wakelet">Wk</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Wakelet allows teachers to save, organize and share content from across the web.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-15 grid-row-4">
+  <div class="element" data-name="Newsela" data-symbol="Nw" data-url="https://newsela.com/" data-group="15" data-period="3" data-cost="Freemium" tabindex=0>
+    <h2 class="name">Newsela</h2>
+    <h3 class="symbol"><a href="https://newsela.com/" rel="nofollow noreferrer"><abbr title="Newsela">Nw</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Newsela is an education website focused on building student reading comprehension by providing high-quality news articles and real-time assessments for students in grades 2–12.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-15 grid-row-5">
+  <div class="element" data-name="Seesaw" data-symbol="Ss" data-url="https://web.seesaw.me/" data-group="15" data-period="4" data-cost="Freemium" tabindex=0>
+    <h2 class="name">Seesaw</h2>
+    <h3 class="symbol"><a href="https://web.seesaw.me/" rel="nofollow noreferrer"><abbr title="Seesaw">Ss</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Seesaw is a classroom app that can be used on mobile devices and web browsers. It allows teachers and students to record and share what&#x27;s happening in the classroom easily.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-15 grid-row-6">
+  <div class="element" data-name="ClassDojo" data-symbol="Cd" data-url="https://classdojo.com/" data-group="15" data-period="5" data-cost="Free" tabindex=0>
+    <h2 class="name">ClassDojo</h2>
+    <h3 class="symbol"><a href="https://classdojo.com/" rel="nofollow noreferrer"><abbr title="ClassDojo">Cd</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">ClassDojo is a school communication platform that teachers, students, and families use every day to build close-knit communities by sharing what&#x27;s being learned in the classroom home through photos, videos, and messages.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-15 grid-row-7">
+  <div class="element" data-name="Padlet" data-symbol="Pt" data-url="https://padlet.com/" data-group="15" data-period="6" data-cost="Freemium" tabindex=0>
+    <h2 class="name">Padlet</h2>
+    <h3 class="symbol"><a href="https://padlet.com/" rel="nofollow noreferrer"><abbr title="Padlet">Pt</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Padlet allows students and teachers to post notes on a common page.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-15 grid-row-8">
+  <div class="element" data-name="Symbaloo" data-symbol="Sb" data-url="https://www.symbaloo.com/" data-group="15" data-period="7" data-cost="Free" tabindex=0>
+    <h2 class="name">Symbaloo</h2>
+    <h3 class="symbol"><a href="https://www.symbaloo.com/" rel="nofollow noreferrer"><abbr title="Symbaloo">Sb</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Symbaloo is a cloud-based site that allows users to organize and categorize web links in the form of buttons.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-16 grid-row-3">
+  <div class="element" data-name="Code.org" data-symbol="Co" data-url="http://code.org/" data-group="16" data-period="2" data-cost="Free" tabindex=0>
+    <h2 class="name">Code.org</h2>
+    <h3 class="symbol"><a href="http://code.org/" rel="nofollow noreferrer"><abbr title="Code.org">Co</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Code.org is a non-profit organization that contains numerous resources and lessons on delivering computer science content.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-16 grid-row-4">
+  <div class="element" data-name="Hour of Code" data-symbol="Hc" data-url="https://hourofcode.com/" data-group="16" data-period="3" data-cost="Free" tabindex=0>
+    <h2 class="name">Hour of Code</h2>
+    <h3 class="symbol"><a href="https://hourofcode.com/" rel="nofollow noreferrer"><abbr title="Hour of Code">Hc</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">The Hour of Code takes place each year during Computer Science Education Week, its mission is for students and teachers to understand that computer science is fun.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-16 grid-row-5">
+  <div class="element" data-name="Scratch" data-symbol="Sr" data-url="https://scratch.mit.edu/" data-group="16" data-period="4" data-cost="Free" tabindex=0>
+    <h2 class="name">Scratch</h2>
+    <h3 class="symbol"><a href="https://scratch.mit.edu/" rel="nofollow noreferrer"><abbr title="Scratch">Sr</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Scratch is a block-based visual programming language and website targeted primarily at children 8-16 to help learn code.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-16 grid-row-6">
+  <div class="element" data-name="Swift Playground" data-symbol="Sw" data-url="https://www.apple.com/ca/swift/playgrounds/" data-group="16" data-period="5" data-cost="Free" tabindex=0>
+    <h2 class="name">Swift Playground</h2>
+    <h3 class="symbol"><a href="https://www.apple.com/ca/swift/playgrounds/" rel="nofollow noreferrer"><abbr title="Swift Playground">Sw</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Swift Playgrounds is an educational tool and development environment for the Swift programming language developed by Apple Inc. It&#x27;s only for iOS devices.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-16 grid-row-7">
+  <div class="element" data-name="CMU CS Academy" data-symbol="Ca" data-url="https://academy.cs.cmu.edu/" data-group="16" data-period="6" data-cost="Free" tabindex=0>
+    <h2 class="name">CMU CS Academy</h2>
+    <h3 class="symbol"><a href="https://academy.cs.cmu.edu/" rel="nofollow noreferrer"><abbr title="CMU CS Academy">Ca</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">CMU CS Academy is an online, graphics-based computer science curriculum taught in Python provided by Carnegie Mellon University.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-16 grid-row-8">
+  <div class="element" data-name="Microsoft MakeCode" data-symbol="Mm" data-url="https://makecode.com" data-group="16" data-period="7" data-cost="Free" tabindex=0>
+    <h2 class="name">Microsoft MakeCode</h2>
+    <h3 class="symbol"><a href="https://makecode.com" rel="nofollow noreferrer"><abbr title="Microsoft MakeCode">Mm</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Microsoft MakeCode provides examples on the diverse application of computer coding through various tools such as micro:bit, adafruit, and LEGO mindstorm.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-17 grid-row-3">
+  <div class="element" data-name="Loom" data-symbol="Lm" data-url="https://www.loom.com/" data-group="17" data-period="2" data-cost="Free for educators" tabindex=0>
+    <h2 class="name">Loom</h2>
+    <h3 class="symbol"><a href="https://www.loom.com/" rel="nofollow noreferrer"><abbr title="Loom">Lm</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Loom is a screencasting Chrome add-on.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-17 grid-row-4">
+  <div class="element" data-name="Screencastomatic" data-symbol="Sc" data-url="https://screencast-o-matic.com/" data-group="17" data-period="3" data-cost="Freemium" tabindex=0>
+    <h2 class="name">Screencastomatic</h2>
+    <h3 class="symbol"><a href="https://screencast-o-matic.com/" rel="nofollow noreferrer"><abbr title="Screencastomatic">Sc</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Screencast-O-Matic is a screencasting and video editing software tool</p>
+  </div>
+</div>
+<div class="grid-item grid-column-17 grid-row-5">
+  <div class="element" data-name="Screencastify" data-symbol="Sy" data-url="https://www.screencastify.com/" data-group="17" data-period="4" data-cost="Free" tabindex=0>
+    <h2 class="name">Screencastify</h2>
+    <h3 class="symbol"><a href="https://www.screencastify.com/" rel="nofollow noreferrer"><abbr title="Screencastify">Sy</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Screencastify is a screencasting Chrome add-on.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-17 grid-row-6">
+  <div class="element" data-name="OBS Studio" data-symbol="Os" data-url="https://obsproject.com/" data-group="17" data-period="5" data-cost="Free" tabindex=0>
+    <h2 class="name">OBS Studio</h2>
+    <h3 class="symbol"><a href="https://obsproject.com/" rel="nofollow noreferrer"><abbr title="OBS Studio">Os</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Open Broadcaster Software is a free and open-source cross-platform streaming and recording program</p>
+  </div>
+</div>
+<div class="grid-item grid-column-17 grid-row-7">
+  <div class="element" data-name="Screenflow" data-symbol="Sf" data-url="http://www.telestream.net/screenflow/overview.htm" data-group="17" data-period="6" data-cost="Freemium" tabindex=0>
+    <h2 class="name">Screenflow</h2>
+    <h3 class="symbol"><a href="http://www.telestream.net/screenflow/overview.htm" rel="nofollow noreferrer"><abbr title="Screenflow">Sf</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">ScreenFlowis a screencasting and video editing software for the macOS operating system.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-17 grid-row-8">
+  <div class="element" data-name="Camtasia" data-symbol="Cz" data-url="https://www.techsmith.com/video-editor.html" data-group="17" data-period="7" data-cost="Freemium" tabindex=0>
+    <h2 class="name">Camtasia</h2>
+    <h3 class="symbol"><a href="https://www.techsmith.com/video-editor.html" rel="nofollow noreferrer"><abbr title="Camtasia">Cz</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Genially is an all-in-one online tool to create stunning presentations, interactive images, infographics, gamification, quizzes, breakouts, portfolios, etc. and enrich them with interactivity and animation effects in seconds.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-18 grid-row-2">
+  <div class="element" data-name="Facebook" data-symbol="Fb" data-url="https://www.facebook.com/" data-group="18" data-period="1" data-cost="Free" tabindex=0>
+    <h2 class="name">Facebook</h2>
+    <h3 class="symbol"><a href="https://www.facebook.com/" rel="nofollow noreferrer"><abbr title="Facebook">Fb</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Facebook is a social networking site for people to connect with one another.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-18 grid-row-3">
+  <div class="element" data-name="Twitter" data-symbol="T" data-url="https://twitter.com/" data-group="18" data-period="2" data-cost="Free" tabindex=0>
+    <h2 class="name">Twitter</h2>
+    <h3 class="symbol"><a href="https://twitter.com/" rel="nofollow noreferrer"><abbr title="Twitter">T</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Twitter is a microblogging and social networking service where people can construct 280 character  &quot;tweets&quot; accompanied by videos and photos. Teachers use Twitter to build on their Professional Learning Network by connecting with likeminded teachers.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-18 grid-row-4">
+  <div class="element" data-name="LinkedIn" data-symbol="Li" data-url="https://ca.linkedin.com/" data-group="18" data-period="3" data-cost="Freemium" tabindex=0>
+    <h2 class="name">LinkedIn</h2>
+    <h3 class="symbol"><a href="https://ca.linkedin.com/" rel="nofollow noreferrer"><abbr title="LinkedIn">Li</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">LinkedIn is an American business and employment-oriented online service site. Teachers use LinkedIn as a virtaul resume and also to connect with other teachers.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-18 grid-row-5">
+  <div class="element" data-name="Instagram" data-symbol="Ig" data-url="https://www.instagram.com/" data-group="18" data-period="4" data-cost="Free" tabindex=0>
+    <h2 class="name">Instagram</h2>
+    <h3 class="symbol"><a href="https://www.instagram.com/" rel="nofollow noreferrer"><abbr title="Instagram">Ig</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Instagram is a photo and video sharing social networking service owned by Facebook. Teachers use Instagram to share photos of their resources, classroom, activities and to connect with other teachers.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-18 grid-row-6">
+  <div class="element" data-name="TikTok" data-symbol="Tt" data-url="https://www.tiktok.com/en/" data-group="18" data-period="5" data-cost="Free" tabindex=0>
+    <h2 class="name">TikTok</h2>
+    <h3 class="symbol"><a href="https://www.tiktok.com/en/" rel="nofollow noreferrer"><abbr title="TikTok">Tt</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">TikTok is a social media platform that is used to make a variety of short-form videos, from genres like dance, comedy, and education, that have a duration from 3 seconds to 1 minute.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-18 grid-row-7">
+  <div class="element" data-name="Tumblr" data-symbol="Tb" data-url="https://www.tumblr.com/" data-group="18" data-period="6" data-cost="Free" tabindex=0>
+    <h2 class="name">Tumblr</h2>
+    <h3 class="symbol"><a href="https://www.tumblr.com/" rel="nofollow noreferrer"><abbr title="Tumblr">Tb</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Tumblr is a microblogging and social networking website. </p>
+  </div>
+</div>
+<div class="grid-item grid-column-18 grid-row-8">
+  <div class="element" data-name="Pinterest" data-symbol="Pn" data-url="https://www.pinterest.com/" data-group="18" data-period="7" data-cost="Free" tabindex=0>
+    <h2 class="name">Pinterest</h2>
+    <h3 class="symbol"><a href="https://www.pinterest.com/" rel="nofollow noreferrer"><abbr title="Pinterest">Pn</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Pinterest is an image sharing and social media service designed to enable saving and discovery of information on the internet using images and, on a smaller scale, animated GIFs and videos, in the form of pinboards</p>
+  </div>
+</div>
+<div class="grid-item grid-column-4 grid-row-10">
+  <div class="element" data-name="Kahoot" data-symbol="K" data-url="https://kahoot.com/" data-group="La" data-period="6" data-cost="Freemium" tabindex=0>
+    <h2 class="name">Kahoot</h2>
+    <h3 class="symbol"><a href="https://kahoot.com/" rel="nofollow noreferrer"><abbr title="Kahoot">K</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Kahoot! is a game-based learning platform, where students can play user-generated multiple choice quizzes synchronously or asynchronously.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-5 grid-row-10">
+  <div class="element" data-name="Edulastic" data-symbol="Ed" data-url="https://edulastic.com/" data-group="La" data-period="6" data-cost="Freemium" tabindex=0>
+    <h2 class="name">Edulastic</h2>
+    <h3 class="symbol"><a href="https://edulastic.com/" rel="nofollow noreferrer"><abbr title="Edulastic">Ed</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Edulastic is a comprehensive online assessment tool</p>
+  </div>
+</div>
+<div class="grid-item grid-column-6 grid-row-10">
+  <div class="element" data-name="Quizizz" data-symbol="Qz" data-url="https://quizizz.com/" data-group="La" data-period="6" data-cost="Freemium" tabindex=0>
+    <h2 class="name">Quizizz</h2>
+    <h3 class="symbol"><a href="https://quizizz.com/" rel="nofollow noreferrer"><abbr title="Quizizz">Qz</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Quizizz allows teachers to create and assign gamified quizzes, lessons, presentations, and flashcards for students</p>
+  </div>
+</div>
+<div class="grid-item grid-column-7 grid-row-10">
+  <div class="element" data-name="Quizlet" data-symbol="Qt" data-url="https://quizlet.com/" data-group="La" data-period="6" data-cost="Freemium" tabindex=0>
+    <h2 class="name">Quizlet</h2>
+    <h3 class="symbol"><a href="https://quizlet.com/" rel="nofollow noreferrer"><abbr title="Quizlet">Qt</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Quizlet is an online study tool that allows students to create flashcards and study them via learning tools and games</p>
+  </div>
+</div>
+<div class="grid-item grid-column-8 grid-row-10">
+  <div class="element" data-name="Plickers" data-symbol="Pc" data-url="https://www.plickers.com/" data-group="La" data-period="6" data-cost="Free" tabindex=0>
+    <h2 class="name">Plickers</h2>
+    <h3 class="symbol"><a href="https://www.plickers.com/" rel="nofollow noreferrer"><abbr title="Plickers">Pc</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Plickers is a rapid-response classroom-polling app that lets teachers use one mobile device to scan paper cards for student responses. There are iOS and Android apps as well as a web interface. Teacher holds up a device such as a phone or a tablet and scans students&#x27; responses, which are recorded.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-9 grid-row-10">
+  <div class="element" data-name="InsertLearning" data-symbol="Il" data-url="https://insertlearning.com/" data-group="La" data-period="6" data-cost="Free" tabindex=0>
+    <h2 class="name">InsertLearning</h2>
+    <h3 class="symbol"><a href="https://insertlearning.com/" rel="nofollow noreferrer"><abbr title="InsertLearning">Il</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">InsertLearning is a Chrome extension that allows teachers to turn any webpage into an interactive assessment tool.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-10 grid-row-10">
+  <div class="element" data-name="Formative" data-symbol="Fo" data-url="https://goformative.com/" data-group="La" data-period="6" data-cost="Freemium" tabindex=0>
+    <h2 class="name">Formative</h2>
+    <h3 class="symbol"><a href="https://goformative.com/" rel="nofollow noreferrer"><abbr title="Formative">Fo</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Formative is a web-app for classrooms that allows teachers to give live assignments to students</p>
+  </div>
+</div>
+<div class="grid-item grid-column-11 grid-row-10">
+  <div class="element" data-name="Gimkit" data-symbol="Gk" data-url="https://www.gimkit.com/" data-group="La" data-period="6" data-cost="Freemium" tabindex=0>
+    <h2 class="name">Gimkit</h2>
+    <h3 class="symbol"><a href="https://www.gimkit.com/" rel="nofollow noreferrer"><abbr title="Gimkit">Gk</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Gimkit is a classroom game-show platform where students compete by answering questions on their electronic devices. Instead of earning points, students earn virtual currency, which they can &quot;invest&quot; during the game to boost their score.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-12 grid-row-10">
+  <div class="element" data-name="Genially" data-symbol="Gy" data-url="https://www.genial.ly/en" data-group="La" data-period="6" data-cost="Freemium" tabindex=0>
+    <h2 class="name">Genially</h2>
+    <h3 class="symbol"><a href="https://www.genial.ly/en" rel="nofollow noreferrer"><abbr title="Genially">Gy</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Genially as your all-in-one online tool to create stunning presentations, interactive images, infographics, gamification, quizzes, breakouts, portfolios, etc. and enrich them with interactivity and animation effects in seconds.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-13 grid-row-10">
+  <div class="element" data-name="Classcraft" data-symbol="Ct" data-url="https://www.classcraft.com/" data-group="La" data-period="6" data-cost="Freemium" tabindex=0>
+    <h2 class="name">Classcraft</h2>
+    <h3 class="symbol"><a href="https://www.classcraft.com/" rel="nofollow noreferrer"><abbr title="Classcraft">Ct</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Classcraft an online, subject-agnostic, educational role-playing game. Teachers assign tasks for students to complete. Students&#x27; characters can only proceed through the game if they have successfully completed the assigned tasks.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-14 grid-row-10">
+  <div class="element" data-name="Socrative" data-symbol="So" data-url="https://www.socrative.com/" data-group="La" data-period="6" data-cost="Freemium" tabindex=0>
+    <h2 class="name">Socrative</h2>
+    <h3 class="symbol"><a href="https://www.socrative.com/" rel="nofollow noreferrer"><abbr title="Socrative">So</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Socrative allows teachers to create simple quizzes that students can take quickly using their personal electronic devices.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-15 grid-row-10">
+  <div class="element" data-name="Spiral" data-symbol="Sp" data-url="https://spiral.ac/" data-group="La" data-period="6" data-cost="Free" tabindex=0>
+    <h2 class="name">Spiral</h2>
+    <h3 class="symbol"><a href="https://spiral.ac/" rel="nofollow noreferrer"><abbr title="Spiral">Sp</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Spiral is a formative assessment tool that emphasizes collaborative learning. Teachers can create quickfire Q&amp;As, assign student teams for presentations, and create discussion points in pre-existing presentations.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-16 grid-row-10">
+  <div class="element" data-name="Playposit" data-symbol="Pp" data-url="https://go.playposit.com/" data-group="La" data-period="6" data-cost="Freemium" tabindex=0>
+    <h2 class="name">Playposit</h2>
+    <h3 class="symbol"><a href="https://go.playposit.com/" rel="nofollow noreferrer"><abbr title="Playposit">Pp</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">PlayPosit is a web- and Chrome-based tool that lets teachers create and edit interactive video assessments from streamed or uploaded content. Teachers upload an audio file or a video from popular sites such as YouTube and Vimeo to create an interactive video. PlayPosit has a large library of templates that teachers can use.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-17 grid-row-10">
+  <div class="element" data-name="Quizalize" data-symbol="Qe" data-url="https://www.quizalize.com/" data-group="La" data-period="6" data-cost="Freemium" tabindex=0>
+    <h2 class="name">Quizalize</h2>
+    <h3 class="symbol"><a href="https://www.quizalize.com/" rel="nofollow noreferrer"><abbr title="Quizalize">Qe</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Quizalize is an online formative assessment tool. It contains official released tests to teacher-created resources. The tool immediately differentiates follow-up activities based on students&#x27; achievement.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-4 grid-row-11">
+  <div class="element" data-name="Remind" data-symbol="Rm" data-url="https://www.remind.com/" data-group="Ac" data-period="7" data-cost="Freemium" tabindex=0>
+    <h2 class="name">Remind</h2>
+    <h3 class="symbol"><a href="https://www.remind.com/" rel="nofollow noreferrer"><abbr title="Remind">Rm</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Remind is a private mobile messaging platform that aims to help teachers, parents, students, and administrators in K–12 schools to communicate with everyone at once.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-5 grid-row-11">
+  <div class="element" data-name="Talking Points" data-symbol="Tp" data-url="https://talkingpts.org/" data-group="Ac" data-period="7" data-cost="Free for educators" tabindex=0>
+    <h2 class="name">Talking Points</h2>
+    <h3 class="symbol"><a href="https://talkingpts.org/" rel="nofollow noreferrer"><abbr title="Talking Points">Tp</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">TalkingPoints is a messenger tool for educators. It allows teachers and administrators to connect and communicate with parents via text messaging directly to their phones and in their native languages.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-6 grid-row-11">
+  <div class="element" data-name="Common Curriculum" data-symbol="Cc" data-url="https://www.commoncurriculum.com/" data-group="Ac" data-period="7" data-cost="Freemium" tabindex=0>
+    <h2 class="name">Common Curriculum</h2>
+    <h3 class="symbol"><a href="https://www.commoncurriculum.com/" rel="nofollow noreferrer"><abbr title="Common Curriculum">Cc</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Common Curriculum contains lesson plan templates that are align with the Common Core &amp; 50 state standards. Templates can be easily exported and shared between collaborating teachers.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-7 grid-row-11">
+  <div class="element" data-name="Planboard" data-symbol="Pb" data-url="https://www.chalk.com/planboard/" data-group="Ac" data-period="7" data-cost="Free" tabindex=0>
+    <h2 class="name">Planboard</h2>
+    <h3 class="symbol"><a href="https://www.chalk.com/planboard/" rel="nofollow noreferrer"><abbr title="Planboard">Pb</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Planboard, a digital planbook and gradebook, is free for individual teachers.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-8 grid-row-11">
+  <div class="element" data-name="Classroom Screen" data-symbol="Cs" data-url="https://classroomscreen.com/" data-group="Ac" data-period="7" data-cost="Free" tabindex=0>
+    <h2 class="name">Classroom Screen</h2>
+    <h3 class="symbol"><a href="https://classroomscreen.com/" rel="nofollow noreferrer"><abbr title="Classroom Screen">Cs</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Classroom Screen allows teachers to create a screen by choosing from over thirteen widgets to help students get to work.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-9 grid-row-11">
+  <div class="element" data-name="Khan Academy" data-symbol="Ka" data-url="https://www.khanacademy.org/" data-group="Ac" data-period="7" data-cost="Free" tabindex=0>
+    <h2 class="name">Khan Academy</h2>
+    <h3 class="symbol"><a href="https://www.khanacademy.org/" rel="nofollow noreferrer"><abbr title="Khan Academy">Ka</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Khan Academy has a set of online tools that help educate students on particular concepts. Teachers can create classes and assign specific Khan Academy created readings or questions to students.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-10 grid-row-11">
+  <div class="element" data-name="PhET" data-symbol="Ph" data-url="https://phet.colorado.edu/" data-group="Ac" data-period="7" data-cost="Free" tabindex=0>
+    <h2 class="name">PhET</h2>
+    <h3 class="symbol"><a href="https://phet.colorado.edu/" rel="nofollow noreferrer"><abbr title="PhET">Ph</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">PhET Interactive Simulations is a non-profit open educational resource project that creates and hosts explorable explanations. PhET simulations can be inserted into slides with the Nearpod Google Slides add-on.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-11 grid-row-11">
+  <div class="element" data-name="Google Tour Builder" data-symbol="Gt" data-url="https://tourbuilder.withgoogle.com/" data-group="Ac" data-period="7" data-cost="Free" tabindex=0>
+    <h2 class="name">Google Tour Builder</h2>
+    <h3 class="symbol"><a href="https://tourbuilder.withgoogle.com/" rel="nofollow noreferrer"><abbr title="Google Tour Builder">Gt</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Google Tour Builder is a web-based storytelling tool which lets students and teachers easily create and explore stories and places around the world.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-12 grid-row-11">
+  <div class="element" data-name="Desmos Classroom Activities" data-symbol="De" data-url="https://teacher.desmos.com/" data-group="Ac" data-period="7" data-cost="Free" tabindex=0>
+    <h2 class="name">Desmos Classroom Activities</h2>
+    <h3 class="symbol"><a href="https://teacher.desmos.com/" rel="nofollow noreferrer"><abbr title="Desmos Classroom Activities">De</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Desmos Classroom contains digital math activities that teachers can assign to students and monitor their progress. </p>
+  </div>
+</div>
+<div class="grid-item grid-column-13 grid-row-11">
+  <div class="element" data-name="BioInteractive" data-symbol="Bi" data-url="https://www.biointeractive.org/home" data-group="Ac" data-period="7" data-cost="Freemium" tabindex=0>
+    <h2 class="name">BioInteractive</h2>
+    <h3 class="symbol"><a href="https://www.biointeractive.org/home" rel="nofollow noreferrer"><abbr title="BioInteractive">Bi</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">BioInteractive is a collection of resources, including 3D, animations, film, video, interactives, and virtual labs, that all pertain to the life sciences.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-14 grid-row-11">
+  <div class="element" data-name="ExploreLearning" data-symbol="El" data-url="https://www.explorelearning.com/" data-group="Ac" data-period="7" data-cost="Paid" tabindex=0>
+    <h2 class="name">ExploreLearning</h2>
+    <h3 class="symbol"><a href="https://www.explorelearning.com/" rel="nofollow noreferrer"><abbr title="ExploreLearning">El</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">ExploreLearning has a large library of interactive online simulations for mathematics and science education in grades 3–12.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-15 grid-row-11">
+  <div class="element" data-name="Concord Consortium" data-symbol="Cm" data-url="https://learn.concord.org/" data-group="Ac" data-period="7" data-cost="Free" tabindex=0>
+    <h2 class="name">Concord Consortium</h2>
+    <h3 class="symbol"><a href="https://learn.concord.org/" rel="nofollow noreferrer"><abbr title="Concord Consortium">Cm</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">The Concord Consortium is filled with great tools to support teachers who are redesigning their curriculum in light of the Next Generation Science Standards.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-16 grid-row-11">
+  <div class="element" data-name="Google Meet" data-symbol="Gm" data-url="https://meet.google.com/" data-group="Ac" data-period="7" data-cost="Free" tabindex=0>
+    <h2 class="name">Google Meet</h2>
+    <h3 class="symbol"><a href="https://meet.google.com/" rel="nofollow noreferrer"><abbr title="Google Meet">Gm</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Google Meet is a video-communication service developed by Google.</p>
+  </div>
+</div>
+<div class="grid-item grid-column-17 grid-row-11">
+  <div class="element" data-name="Zoom" data-symbol="Z" data-url="https://zoom.us/" data-group="Ac" data-period="7" data-cost="Freemium" tabindex=0>
+    <h2 class="name">Zoom</h2>
+    <h3 class="symbol"><a href="https://zoom.us/" rel="nofollow noreferrer"><abbr title="Zoom">Z</abbr></a></h3>
+    <div class="flexfix"></div>
+    <p class="description">Zoom is a video-communication service that is used for teleconferencing, telecommuting, distance education, and social relations.</p>
+  </div>
+</div>
+          <!-- END GENERATED HTML -->
+          <div class="info">
+            <div class="info-card"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script>
+      function handleSelect(e) {
+        if (e.type === 'keydown' && e.code !== 'Enter') {
+          return;
+        }
+        const el = e.target.closest('.element');
+        if (e.target.closest('a')) {
+          e.stopPropagation();
+          return;
+        }
+        window.open(el.dataset.url);
+      }
+
+      function handleFocus(e) {
+        const el = e.target.closest('.element');
+        const symbol = el.querySelector('.symbol').textContent;
+        const name = el.querySelector('.name').textContent;
+        const description = el.querySelector('.description').textContent;
+
+        const newInfoCard = document.createElement('div');
+        newInfoCard.classList.add('info-card');
+        let div = document.createElement('div');
+        const h2 = document.createElement('h2');
+        h2.append(symbol);
+        div.append(h2);
+        const h3 = document.createElement('h3');
+        h3.append(name);
+        div.append(h3);
+        newInfoCard.append(div);
+
+        div = document.createElement('div')
+        const p = document.createElement('p');
+        let strong;
+        if (el.dataset.cost) {
+          strong = document.createElement('strong');
+          strong.append(`${el.dataset.cost}. `);
+        }
+        p.append(strong);
+        p.append(description);
+        div.append(p)
+        newInfoCard.append(div);
+
+        const infoCard = document.querySelector('.info-card');
+        infoCard.replaceWith(newInfoCard);
+      }
+
+      document.addEventListener('DOMContentLoaded', (event) => {
+        const elements = document.querySelectorAll('.element');
+        for (const element of elements) {
+          element.addEventListener('click', handleSelect);
+          element.addEventListener('keydown', handleSelect);
+          element.addEventListener('mouseover', handleFocus);
+          element.addEventListener('focus', handleFocus);
+        }
+
+        const filters = document.querySelectorAll('.filter');
+        for (const filter of filters) {
+          filter.addEventListener('change', (e) => {
+            const elements = document.querySelectorAll(`[data-cost="${filter.value}"]`);
+            for (const element of elements) {
+              element.classList.toggle('disabled');
+            }
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
